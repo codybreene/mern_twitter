@@ -2,8 +2,11 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const db = require("./config/keys").mongoURI;
+const User = require('./models/User');
 
 //parse JSON we send to front-end
+//respond to json requests
+//respond to requests from other software like postman
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -18,6 +21,12 @@ mongoose
   .catch(err => console.log(err));
 
 app.get("/", (req, res) => {
+    const user = new User({
+        handle: "badboi",
+        email: "cody@cody.com",
+        password: "password123"
+    })
+    user.save();
     res.send("Hello Codeman")}
     )
     
