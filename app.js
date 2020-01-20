@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const db = require("./config/keys").mongoURI;
 const User = require('./models/User');
+const passport = require('passport');
 
 //parse JSON we send to front-end
 //respond to json requests
@@ -20,15 +21,8 @@ mongoose
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
-app.get("/", (req, res) => {
-    const user = new User({
-        handle: "badboi",
-        email: "cody@cody.com",
-        password: "password123"
-    })
-    user.save();
-    res.send("Hello Codeman")}
-    )
+app.use(passport.initialize());
+require("./config/passport")(passport);
     
 app.use("/api/users", users);
 app.use("/api/tweets", tweets);
