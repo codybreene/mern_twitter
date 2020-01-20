@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const getTweets = () => (
-  axios.get("/api/tweets")
+  axios.get('/api/tweets')
 );
 
 export const getUserTweets = (id) => (
