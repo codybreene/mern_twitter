@@ -40,6 +40,7 @@ router.get("/:id", (req, res) => {
 router.get("/user/:user_id", (req, res) => {
     Tweet
         .find({user: req.params.user_id})
+        .sort({ date: -1})
         .then(tweets => res.json(tweets))
         .catch(err => res.status(400).json(err));
 })

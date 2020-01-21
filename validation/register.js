@@ -6,7 +6,6 @@ const validText = require("./valid-text");
 const validateRegisterInput = (data) => {
   let errors = {};
 
-  debugger;
   data.handle = validText(data.handle) ? data.handle : "";
   data.email = validText(data.email) ? data.email : "";
   data.password = validText(data.password) ? data.password : "";

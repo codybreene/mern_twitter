@@ -35,7 +35,7 @@ export const fetchTweets = () => (dispatch) => (
 
 export const fetchUserTweets = (id) => (dispatch) => (
   getUserTweets(id)
-    .then( (tweets) => dispatch(receiveUserTweets))
+    .then( (tweets) => dispatch(receiveUserTweets(tweets)))
     .catch(err => console.log(err))
 );
 
